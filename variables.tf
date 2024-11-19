@@ -15,22 +15,33 @@ variable "region" {
   default     = "ap-northeast-3"
 }
 
+variable "availability_zones" {
+  default = ["ap-northeast-3a", "ap-northeast-3b", "ap-northeast-3c"]
+}
+
+variable "aws_access_key" {
+  description = "AWS Access Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "aws_secret_key" {
+  description = "AWS Secret Key"
+  type        = string
+  sensitive   = true
+}
+
+variable "vault_license" {
+  description = "HashiCorp Vault license key"
+  type        = string
+  sensitive   = true
+}
+
 variable "address_space" {
   description = "The address space that is used by the virtual network. You can supply more than one address space. Changing this forces a new resource to be created."
   default     = "10.0.0.0/16"
 }
 
-# variable "subnet_prefix" {
-#   description = "The address prefix to use for the subnet."
-#   default     = "10.0.10.0/24"
-# }
-
-variable "subnets" {
-  description = "List of subnets with CIDR blocks"
-  type        = map(string)
-  default     = {
-    subnet1 = "10.0.1.0/24"
-    subnet2 = "10.0.2.0/24"
-    subnet3 = "10.0.3.0/24"
-  }
+variable "vpc_cidr_base" {
+  default = "10.0"
 }
